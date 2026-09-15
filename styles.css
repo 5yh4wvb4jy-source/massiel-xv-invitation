@@ -1,0 +1,700 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+    background: #2a2a2a;
+    color: #3d3d3d;
+}
+
+/* ============================================
+   BACKGROUND & ENCHANTED FOREST
+   ============================================ */
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.enchanted-forest {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 25%, #f0e0cc 50%, #e8d5c4 75%, #f5e6d3 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enchanted Forest Pattern */
+.enchanted-forest::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(ellipse 800px 600px at 20% 30%, rgba(139, 105, 20, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse 600px 500px at 80% 70%, rgba(139, 105, 20, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* ============================================
+   STARS & PARTICLES
+   ============================================ */
+
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.stars-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #ffd700, rgba(255, 215, 0, 0)),
+        radial-gradient(2px 2px at 60% 70%, #fff8dc, rgba(255, 248, 220, 0)),
+        radial-gradient(1px 1px at 50% 50%, #ffefd5, rgba(255, 239, 213, 0)),
+        radial-gradient(1px 1px at 80% 10%, #fff8dc, rgba(255, 248, 220, 0)),
+        radial-gradient(2px 2px at 90% 60%, #ffd700, rgba(255, 215, 0, 0)),
+        radial-gradient(1px 1px at 30% 80%, #fff8dc, rgba(255, 248, 220, 0));
+    background-repeat: repeat;
+    background-size: 200% 200%;
+    animation: starsFloat 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes starsFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-20px); }
+}
+
+.particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particles-container::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(212, 165, 116, 0.4) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: particlesFloat 30s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes particlesFloat {
+    0% { transform: translateY(100px) translateX(0); }
+    100% { transform: translateY(-100px) translateX(50px); }
+}
+
+/* ============================================
+   MUSIC CONTROL
+   ============================================ */
+
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
+    border: 2px solid #8b6914;
+    color: #2a2a2a;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 105, 20, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.5);
+}
+
+.music-btn.playing {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ============================================
+   MAIN CONTAINER & LAYOUT
+   ============================================ */
+
+.main-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   COVER SECTION
+   ============================================ */
+
+.cover-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+
+.cover-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+    position: relative;
+}
+
+/* Magical Book */
+.book-container {
+    perspective: 1000px;
+    cursor: pointer;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+}
+
+.book-image {
+    width: 150px;
+    height: 200px;
+    display: block;
+    animation: floatingBook 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.book-container:hover .book-image {
+    transform: scale(1.05);
+}
+
+@keyframes floatingBook {
+    0%, 100% {
+        transform: translateY(0px) rotateZ(-2deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateZ(2deg);
+    }
+}
+
+/* XV Number */
+.xv-number {
+    font-size: 120px;
+    font-weight: bold;
+    color: #d4a574;
+    text-shadow: 
+        2px 2px 4px rgba(139, 105, 20, 0.3),
+        4px 4px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: 8px;
+    font-family: 'Georgia', serif;
+    margin: -20px 0;
+}
+
+/* MASSIEL Name */
+.massiel-name {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #8b6914;
+    font-style: italic;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.cover-subtitle {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #a0826d;
+    font-weight: 300;
+}
+
+/* Open Button */
+.open-button {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
+    color: white;
+    border: 2px solid #8b6914;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(139, 105, 20, 0.3);
+    margin-top: 20px;
+}
+
+.open-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(139, 105, 20, 0.5);
+}
+
+.open-button:active {
+    transform: translateY(-1px);
+}
+
+/* Massiel Photo */
+.massiel-photo-container {
+    margin-top: 20px;
+}
+
+.photo-frame {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #d4a574;
+    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.4);
+    animation: photoGlow 3s ease-in-out infinite;
+}
+
+.massiel-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes photoGlow {
+    0%, 100% {
+        box-shadow: 0 10px 25px rgba(212, 165, 116, 0.4);
+    }
+    50% {
+        box-shadow: 0 10px 35px rgba(212, 165, 116, 0.7);
+    }
+}
+
+/* Floating Flowers on Cover */
+.floating-flower {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='25' fill='%23f5c574'/%3E%3Ccircle cx='50' cy='20' r='15' fill='%23f5dca0'/%3E%3Ccircle cx='80' cy='50' r='15' fill='%23f5dca0'/%3E%3Ccircle cx='50' cy='80' r='15' fill='%23f5dca0'/%3E%3Ccircle cx='20' cy='50' r='15' fill='%23f5dca0'/%3E%3Ccircle cx='70' cy='30' r='12' fill='%23fde8a0'/%3E%3Ccircle cx='70' cy='70' r='12' fill='%23fde8a0'/%3E%3Ccircle cx='30' cy='30' r='12' fill='%23fde8a0'/%3E%3Ccircle cx='30' cy='70' r='12' fill='%23fde8a0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+    animation: floatingFlower 6s ease-in-out infinite;
+}
+
+.flower-1 {
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.flower-2 {
+    top: 70%;
+    right: 5%;
+    animation-delay: 2s;
+}
+
+.flower-3 {
+    bottom: 10%;
+    left: 10%;
+    animation-delay: 4s;
+}
+
+@keyframes floatingFlower {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+
+.content-section {
+    padding: 60px 20px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.parchment-background {
+    position: relative;
+    background: linear-gradient(135deg, #f5e6d3 0%, #ede3d3 100%);
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 20px rgba(139, 105, 20, 0.05);
+    border: 2px solid rgba(212, 165, 116, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.parchment-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(ellipse 600px 400px at top left, rgba(212, 165, 116, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 300px at bottom right, rgba(139, 105, 20, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.parchment-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   TYPOGRAPHY & SECTIONS
+   ============================================ */
+
+.section-title {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #8b6914;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Georgia', serif;
+}
+
+/* FECHA Section */
+.fecha-section {
+    margin-top: 80px;
+}
+
+.calendar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(212, 165, 116, 0.1);
+    padding: 20px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.day-letter {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #a0826d;
+    margin-bottom: 8px;
+}
+
+.day-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d4a574;
+}
+
+.heart-divider {
+    font-size: 32px;
+    color: #d4a574;
+    opacity: 0.6;
+}
+
+.calendar-month {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.month-name {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #8b6914;
+    margin-bottom: 5px;
+}
+
+.year-number {
+    font-size: 20px;
+    font-weight: 600;
+    color: #d4a574;
+}
+
+.time-info {
+    text-align: center;
+    font-size: 24px;
+    color: #8b6914;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.decorative-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    margin: 30px auto;
+}
+
+/* CONTADOR Section */
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: rgba(212, 165, 116, 0.08);
+    border-radius: 10px;
+    border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.countdown-number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #d4a574;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #8b6914;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* UBICACIÓN Section */
+.location-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.location-info {
+    margin: 30px 0;
+}
+
+.location-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #8b6914;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.location-address {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+    text-align: center;
+}
+
+.location-button,
+.confirmation-button {
+    display: inline-block;
+    padding: 12px 35px;
+    background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
+    color: white;
+    text-decoration: none;
+    border: 2px solid #8b6914;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 6px 15px rgba(139, 105, 20, 0.2);
+}
+
+.location-button:hover,
+.confirmation-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 105, 20, 0.4);
+}
+
+/* CONFIRMACIÓN Section */
+.confirmation-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+    color: #d4a574;
+}
+
+.confirmation-text {
+    font-size: 18px;
+    color: #8b6914;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.confirmation-subtext {
+    font-size: 14px;
+    color: #a0826d;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* CLOSING Section */
+.closing-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.closing-message {
+    font-size: 36px;
+    color: #8b6914;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+/* ============================================
+   SECTION FLOWERS
+   ============================================ */
+
+.section-flower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='20' fill='%23f5c574'/%3E%3Ccircle cx='50' cy='20' r='12' fill='%23f5dca0'/%3E%3Ccircle cx='80' cy='50' r='12' fill='%23f5dca0'/%3E%3Ccircle cx='50' cy='80' r='12' fill='%23f5dca0'/%3E%3Ccircle cx='20' cy='50' r='12' fill='%23f5dca0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+    animation: sectionFloatingFlower 8s ease-in-out infinite;
+}
+
+.flower-s1 { top: -20px; left: -20px; animation-delay: 0s; }
+.flower-s2 { bottom: -20px; right: -20px; animation-delay: 1s; }
+.flower-s3 { top: -20px; right: -20px; animation-delay: 2s; }
+.flower-s4 { bottom: -20px; left: -20px; animation-delay: 3s; }
+.flower-s5 { top: -20px; left: 10%; animation-delay: 1.5s; }
+.flower-s6 { bottom: -20px; right: 10%; animation-delay: 2.5s; }
+.flower-s7 { top: -20px; right: 15%; animation-delay: 0.5s; }
+.flower-s8 { bottom: -20px; left: 15%; animation-delay: 3.5s; }
+.flower-s9 { top: -20px; left: 20%; animation-delay: 1s; }
+.flower-s10 { bottom: -20px; right: 20%; animation-delay: 2s; }
+
+@keyframes sectionFloatingFlower {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-12px);
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+    .xv-number {
+        font-size: 80px;
+        letter-spacing: 4px;
+    }
+
+    .massiel-name {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .countdown-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .countdown-number {
+        font-size: 32px;
+    }
+
+    .countdown-label {
+        font-size: 10px;
+    }
+
+    .parchment-background {
+        padding: 30px 20px;
+    }
+}

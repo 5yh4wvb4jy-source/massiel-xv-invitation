@@ -164,80 +164,34 @@ function setupScrollAnimations() {
 }
 
 // ============================================
-// MUSIC CONTROL
+// MUSIC CONTROL - MP3 FILE
 // ============================================
 
-let audioContext = null;
-let oscillator = null;
-let gainNode = null;
+let audioElement = null;
 let isPlaying = false;
 
+function initAudioElement() {
+    if (!audioElement) {
+        audioElement = new Audio('assets/audio/massiel-xv.mp3');
+        audioElement.volume = 0.3; // Volumen suave
+        audioElement.loop = true; // Loop infinito
+    }
+}
+
 function startMusic() {
+    initAudioElement();
     const musicBtn = document.getElementById('musicBtn');
     
-    if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        gainNode = audioContext.createGain();
-        gainNode.connect(audioContext.destination);
-        gainNode.gain.value = 0.1; // Soft volume
-    }
-    
     if (!isPlaying) {
-        playElegantMusic();
-        musicBtn.classList.add('playing');
+        audioElement.play().then(() => {
+            isPlaying = true;
+            if (musicBtn) {
+                musicBtn.classList.add('playing');
+            }
+        }).catch(error => {
+            console.log('Error reproduciendo audio:', error);
+        });
     }
-}
-
-function playElegantMusic() {
-    if (!audioContext) return;
-    
-    // Stop any existing oscillators
-    if (oscillator) {
-        oscillator.stop();
-    }
-    
-    // Create a simple, elegant melody
-    const notes = [
-        { freq: 261.63, duration: 0.5 },  // C
-        { freq: 293.66, duration: 0.5 },  // D
-        { freq: 329.63, duration: 0.5 },  // E
-        { freq: 349.23, duration: 0.5 },  // F
-        { freq: 392.00, duration: 0.5 },  // G
-        { freq: 440.00, duration: 0.5 },  // A
-        { freq: 493.88, duration: 0.5 },  // B
-        { freq: 523.25, duration: 1.0 },  // C (higher)
-    ];
-    
-    let currentTime = audioContext.currentTime;
-    
-    notes.forEach((note, index) => {
-        playNote(note.freq, currentTime, note.duration);
-        currentTime += note.duration;
-    });
-    
-    // Loop the music
-    setTimeout(() => {
-        if (isPlaying) {
-            playElegantMusic();
-        }
-    }, currentTime * 1000);
-    
-    isPlaying = true;
-}
-
-function playNote(frequency, startTime, duration) {
-    if (!audioContext) return;
-    
-    oscillator = audioContext.createOscillator();
-    oscillator.type = 'sine';
-    oscillator.frequency.value = frequency;
-    oscillator.connect(gainNode);
-    
-    gainNode.gain.setTargetAtTime(0.1, startTime, 0.01);
-    gainNode.gain.setTargetAtTime(0.05, startTime + duration * 0.8, 0.1);
-    
-    oscillator.start(startTime);
-    oscillator.stop(startTime + duration);
 }
 
 function toggleMusic() {
@@ -245,16 +199,20 @@ function toggleMusic() {
     
     if (isPlaying) {
         pauseMusic();
-        musicBtn.classList.remove('playing');
+        if (musicBtn) {
+            musicBtn.classList.remove('playing');
+        }
     } else {
         startMusic();
-        musicBtn.classList.add('playing');
+        if (musicBtn) {
+            musicBtn.classList.add('playing');
+        }
     }
 }
 
 function pauseMusic() {
-    if (oscillator) {
-        oscillator.stop();
+    if (audioElement) {
+        audioElement.pause();
     }
     isPlaying = false;
 }

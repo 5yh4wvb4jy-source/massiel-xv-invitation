@@ -172,7 +172,7 @@ let isPlaying = false;
 
 function initAudioElement() {
     if (!audioElement) {
-        audioElement = new Audio('assets/audio/massiel-xv.mp3');
+        audioElement = new Audio('Con%20toda%20libertad%20-%20cons%C3%BC.mp3');
         audioElement.volume = 0.3; // Volumen suave
         audioElement.loop = true; // Loop infinito
     }

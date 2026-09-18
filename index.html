@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XV Años - MASSIEL BERENICE MEJÍA PONCE</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Únicamente decoración añadida: filigranas doradas y código de vestimenta */
+        .golden-filigrana {
+            position: fixed;
+            z-index: 1;
+            width: clamp(90px, 24vw, 180px);
+            height: auto;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0.18;
+            transform-origin: center;
+            animation: filigranaBrisa 18s ease-in-out infinite;
+        }
+        .golden-filigrana.f1 { top: 4%; left: -2%; transform: rotate(-14deg); animation-delay: -2s; }
+        .golden-filigrana.f2 { top: 19%; right: -3%; width: clamp(75px, 20vw, 155px); transform: rotate(22deg); animation-delay: -8s; opacity: 0.14; }
+        .golden-filigrana.f3 { top: 39%; left: 1%; width: clamp(70px, 18vw, 140px); transform: rotate(12deg); animation-delay: -12s; opacity: 0.13; }
+        .golden-filigrana.f4 { top: 57%; right: 0; width: clamp(95px, 23vw, 175px); transform: rotate(-18deg); animation-delay: -5s; opacity: 0.15; }
+        .golden-filigrana.f5 { top: 76%; left: -4%; width: clamp(85px, 21vw, 165px); transform: rotate(18deg); animation-delay: -15s; opacity: 0.14; }
+        .golden-filigrana.f6 { top: 91%; right: 2%; width: clamp(70px, 17vw, 135px); transform: rotate(-10deg); animation-delay: -10s; opacity: 0.12; }
+        @keyframes filigranaBrisa {
+            0%, 100% { margin-top: 0; filter: drop-shadow(0 0 0 rgba(212,165,116,0)); }
+            50% { margin-top: -14px; filter: drop-shadow(0 0 8px rgba(212,165,116,0.25)); }
+        }
+        .dress-code-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+            color: #d4a574;
+        }
+        .dress-code-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #8b6914;
+            margin: 20px auto;
+            max-width: 430px;
+        }
+        .dress-code-note {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #a0826d;
+            font-style: italic;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <!-- Background Animation Container -->
@@ -12,6 +57,13 @@
         <div class="enchanted-forest"></div>
         <div class="stars-container"></div>
         <div class="particles-container"></div>
+        <!-- Filigranas doradas decorativas del proyecto -->
+        <img class="golden-filigrana f1" src="Designer%20(1).png" alt="">
+        <img class="golden-filigrana f2" src="Designer%20(1).png" alt="">
+        <img class="golden-filigrana f3" src="Designer%20(1).png" alt="">
+        <img class="golden-filigrana f4" src="Designer%20(1).png" alt="">
+        <img class="golden-filigrana f5" src="Designer%20(1).png" alt="">
+        <img class="golden-filigrana f6" src="Designer%20(1).png" alt="">
     </div>
 
     <!-- Music Control -->
@@ -32,24 +84,16 @@
                 </div>
 
                 <!-- XV Golden Number -->
-                <div class="xv-number animate-fade-in" style="animation-delay: 0.3s">
-                    XV
-                </div>
+                <div class="xv-number animate-fade-in" style="animation-delay: 0.3s">XV</div>
 
                 <!-- Name MASSIEL -->
-                <div class="massiel-name animate-fade-in" style="animation-delay: 0.6s">
-                    MASSIEL
-                </div>
+                <div class="massiel-name animate-fade-in" style="animation-delay: 0.6s">MASSIEL</div>
 
                 <!-- Subtitle -->
-                <div class="cover-subtitle animate-fade-in" style="animation-delay: 0.9s">
-                    BERENICE MEJÍA PONCE
-                </div>
+                <div class="cover-subtitle animate-fade-in" style="animation-delay: 0.9s">BERENICE MEJÍA PONCE</div>
 
                 <!-- Open Button -->
-                <button class="open-button animate-fade-in" id="openBtn" style="animation-delay: 1.2s">
-                    ABRIR AQUÍ
-                </button>
+                <button class="open-button animate-fade-in" id="openBtn" style="animation-delay: 1.2s">ABRIR AQUÍ</button>
 
                 <!-- Massiel Photo -->
                 <div class="massiel-photo-container animate-fade-in" style="animation-delay: 1.5s">
@@ -70,28 +114,14 @@
             <div class="parchment-background">
                 <div class="parchment-content">
                     <h2 class="section-title animate-on-scroll">GUARDA LA FECHA</h2>
-                    
                     <div class="calendar-container animate-on-scroll" style="animation-delay: 0.3s">
-                        <div class="calendar-day">
-                            <span class="day-letter">Sab</span>
-                            <span class="day-number">17</span>
-                        </div>
+                        <div class="calendar-day"><span class="day-letter">Sab</span><span class="day-number">17</span></div>
                         <div class="heart-divider">♥</div>
-                        <div class="calendar-month">
-                            <span class="month-name">Octubre</span>
-                            <span class="year-number">2026</span>
-                        </div>
+                        <div class="calendar-month"><span class="month-name">Octubre</span><span class="year-number">2026</span></div>
                     </div>
-
-                    <div class="time-info animate-on-scroll" style="animation-delay: 0.6s">
-                        <p>3:00 P.M.</p>
-                    </div>
-
+                    <div class="time-info animate-on-scroll" style="animation-delay: 0.6s"><p>3:00 P.M.</p></div>
                     <div class="decorative-divider"></div>
-
-                    <!-- Floating Flowers -->
-                    <div class="section-flower flower-s1"></div>
-                    <div class="section-flower flower-s2"></div>
+                    <div class="section-flower flower-s1"></div><div class="section-flower flower-s2"></div>
                 </div>
             </div>
         </section>
@@ -101,29 +131,13 @@
             <div class="parchment-background">
                 <div class="parchment-content">
                     <h2 class="section-title animate-on-scroll">CUENTA REGRESIVA</h2>
-                    
                     <div class="countdown-container animate-on-scroll" style="animation-delay: 0.3s">
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="days">102</span>
-                            <span class="countdown-label">DÍAS</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="hours">18</span>
-                            <span class="countdown-label">HORAS</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="minutes">59</span>
-                            <span class="countdown-label">MINUTOS</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="seconds">52</span>
-                            <span class="countdown-label">SEGUNDOS</span>
-                        </div>
+                        <div class="countdown-item"><span class="countdown-number" id="days">102</span><span class="countdown-label">DÍAS</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="hours">18</span><span class="countdown-label">HORAS</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="minutes">59</span><span class="countdown-label">MINUTOS</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="seconds">52</span><span class="countdown-label">SEGUNDOS</span></div>
                     </div>
-
-                    <!-- Floating Flowers -->
-                    <div class="section-flower flower-s3"></div>
-                    <div class="section-flower flower-s4"></div>
+                    <div class="section-flower flower-s3"></div><div class="section-flower flower-s4"></div>
                 </div>
             </div>
         </section>
@@ -133,26 +147,26 @@
             <div class="parchment-background">
                 <div class="parchment-content">
                     <h2 class="section-title animate-on-scroll">UBICACIÓN</h2>
-                    
                     <div class="location-icon animate-on-scroll" style="animation-delay: 0.3s">📍</div>
-
                     <div class="location-info animate-on-scroll" style="animation-delay: 0.6s">
                         <h3 class="location-name">Colegio de Abogados de Honduras (CAH)</h3>
-                        <p class="location-address">
-                            2.ª Avenida, carretera CA-5<br>
-                            Colonia 15 de Septiembre<br>
-                            Frente al Aeropuerto Internacional Toncontín<br>
-                            Comayagüela, M.D.C.
-                        </p>
+                        <p class="location-address">2.ª Avenida, carretera CA-5<br>Colonia 15 de Septiembre<br>Frente al Aeropuerto Internacional Toncontín<br>Comayagüela, M.D.C.</p>
                     </div>
+                    <a href="https://maps.google.com/?q=Colegio+de+Abogados+de+Honduras+CAH+Comayaguela" target="_blank" class="location-button animate-on-scroll" style="animation-delay: 0.9s">CÓMO LLEGAR</a>
+                    <div class="section-flower flower-s5"></div><div class="section-flower flower-s6"></div>
+                </div>
+            </div>
+        </section>
 
-                    <a href="https://maps.google.com/?q=Colegio+de+Abogados+de+Honduras+CAH+Comayaguela" target="_blank" class="location-button animate-on-scroll" style="animation-delay: 0.9s">
-                        CÓMO LLEGAR
-                    </a>
-
-                    <!-- Floating Flowers -->
-                    <div class="section-flower flower-s5"></div>
-                    <div class="section-flower flower-s6"></div>
+        <!-- CÓDIGO DE VESTIMENTA / DRESS CODE SECTION -->
+        <section class="dress-code-section content-section">
+            <div class="parchment-background">
+                <div class="parchment-content">
+                    <h2 class="section-title animate-on-scroll">Código de Vestimenta</h2>
+                    <div class="dress-code-icon animate-on-scroll" style="animation-delay: 0.3s">🎩</div>
+                    <p class="dress-code-text animate-on-scroll" style="animation-delay: 0.6s">Con mucho cariño te recordamos que el color amarillo está reservado especialmente para la quinceañera.</p>
+                    <p class="dress-code-note animate-on-scroll" style="animation-delay: 0.9s">Agradeceremos elegir otros tonos para acompañarnos en esta celebración tan especial.</p>
+                    <div class="section-flower flower-s5"></div><div class="section-flower flower-s6"></div>
                 </div>
             </div>
         </section>
@@ -162,24 +176,11 @@
             <div class="parchment-background">
                 <div class="parchment-content">
                     <h2 class="section-title animate-on-scroll">CONFIRMACIÓN</h2>
-                    
                     <div class="confirmation-icon animate-on-scroll" style="animation-delay: 0.3s">✓</div>
-
-                    <p class="confirmation-text animate-on-scroll" style="animation-delay: 0.6s">
-                        Tenemos un lugar reservado para ti
-                    </p>
-
-                    <p class="confirmation-subtext animate-on-scroll" style="animation-delay: 0.9s">
-                        Confirma tu asistencia
-                    </p>
-
-                    <a href="https://wa.me/50494990567?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20MASSIEL%20BERENICE%20MEJÍA%20PONCE" target="_blank" class="confirmation-button animate-on-scroll" style="animation-delay: 1.2s">
-                        CONFIRMAR AQUÍ
-                    </a>
-
-                    <!-- Floating Flowers -->
-                    <div class="section-flower flower-s7"></div>
-                    <div class="section-flower flower-s8"></div>
+                    <p class="confirmation-text animate-on-scroll" style="animation-delay: 0.6s">Tenemos un lugar reservado para ti</p>
+                    <p class="confirmation-subtext animate-on-scroll" style="animation-delay: 0.9s">Confirma tu asistencia</p>
+                    <a href="https://wa.me/50494990567?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20MASSIEL%20BERENICE%20MEJÍA%20PONCE" target="_blank" class="confirmation-button animate-on-scroll" style="animation-delay: 1.2s">CONFIRMAR AQUÍ</a>
+                    <div class="section-flower flower-s7"></div><div class="section-flower flower-s8"></div>
                 </div>
             </div>
         </section>
@@ -189,15 +190,11 @@
             <div class="parchment-background">
                 <div class="parchment-content">
                     <p class="closing-message animate-on-scroll">Te esperamos</p>
-
-                    <!-- Floating Flowers -->
-                    <div class="section-flower flower-s9"></div>
-                    <div class="section-flower flower-s10"></div>
+                    <div class="section-flower flower-s9"></div><div class="section-flower flower-s10"></div>
                 </div>
             </div>
         </section>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>
